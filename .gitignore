@@ -1,0 +1,9 @@
+.env
+*.json
+*.pickle
+repl.py
+*_cache
+**/__pycache__
+.python-version
+*.egg-info
+.coverage

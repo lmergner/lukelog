@@ -1,0 +1,140 @@
+[build-system]
+requires = ["setuptools >= 68.2.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lukelog"
+version = "0.0.1"
+license = { text="MIT" }
+description = "Personal logging module for cli projects"
+readme = "README.md"
+# python 3.11 ships tomllib in stdlib
+requires-python = ">=3.11.2"
+authors = [
+    { name = "Luke Mergner", email = "lmergner@gmail.com" },
+]
+classifiers = [
+    "Natural Language :: English",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+]
+keywords = []
+dependencies = [
+]
+
+[project.optional-dependencies]
+testing = [
+    "pytest==7.2.2",
+    "pytest-cov==4.0.0",
+]
+
+dev = [
+    "ruff==0.0.260",
+    "isort==5.12.0",
+    "blue==0.9.1",
+]
+
+tree = [
+    "logging_tree==1.9",
+]
+
+[project.urls]
+homepage = "https://github.com/lmergner/lukelog"
+repository = "https://github.com/lmergner/lukelog"
+changelog = "https://github.com/lmergner/lukelog/blob/master/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/lmergner/lukelog/issues"
+
+[tool.setuptools.packages.find]
+where = ["lukelog"]
+
+[tool.isort]
+profile = "black"
+src_paths = ["lukelog"]
+
+[tool.blue]
+line-length = 88
+
+[tool.semantic_release]
+version_toml = "pyproject.toml:project.version"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--cov=lukelog --cov-report html"
+testpaths = [
+    "tests"
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+log_cli = 1
+log_cli_level = "DEBUG"
+
+[tool.doc8]
+max-line-length = 88
+
+[tool.mypy]
+exclude = ["tests"]
+
+# from coverage
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+follow_imports = "silent"
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.ruff]
+select = ['E', 'F']
+ignore = []
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+# Same as Black.
+line-length = 88
+
+# Assume Python 3.10.
+target-version = "py311"
+
+[tool.coverage.run]
+branch = true
+omit = [ "tests/*" ]
+
+[tool.coverage.paths]
+source = [ "lukelog/" ]
+
+[tool.coverage.report]
+
+[tool.coverage.html]
+
+[tool.pyright]
