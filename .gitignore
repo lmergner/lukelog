@@ -7,3 +7,4 @@ repl.py
 .python-version
 *.egg-info
 .coverage
+htmlcov
